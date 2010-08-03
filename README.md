@@ -18,6 +18,10 @@ differences:
 except that the strings "null", "true", and "false" must always be quoted.
 The regex is the syntax of JavaScript identifiers.
 
+Re-inspired by [CoffeeScript](http://jashkenas.github.com/coffee-script/#objects_and_arrays)
+after [thinking about it](http://pmuellr.blogspot.com/2008/08/better-than-json.html) 
+[for a short while](http://pmuellr.blogspot.com/2007/03/json-array-vulnerability.html).
+
 examples
 --------
 
