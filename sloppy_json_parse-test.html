@@ -1,0 +1,209 @@
+<!--  ============================================================= -->
+<h1>Testcases for sloppy_json_parse()</h1>
+<pre id="output"></pre>
+
+<!--  ============================================================= -->
+<section id="empty object">
+<pre>{}</pre>
+<pre>{}</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="single-element object">
+<pre>{a:b}</pre>
+<pre>{"a":"b"}</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="multi-element object">
+<pre>{x:y z:a}</pre>
+<pre>{"x":"y", "z":"a"}</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="empty array">
+<pre>[]</pre>
+<pre>[]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="single element array">
+<pre>[1]</pre>
+<pre>[1]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="multi-element array">
+<pre>[1 2 3]</pre>
+<pre>[1, 2, 3]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="rich object 1">
+<pre>
+# an object
+{
+    # some properties of the object
+    a: z                             # z is a string!
+    b: y                             # so is y
+    c: [1 2 3]
+    d: [                             # d is an array
+        {
+            abc: true
+            def: false
+        }                            # end of this inner object
+        
+        {
+            xyz: null
+            uvw: [101 202 303]       # weird numbers
+        }
+        
+        [4 5 6]                      # last element
+    ]
+    # of of the properties
+}
+</pre>
+
+<pre>
+{
+    "a": "z",
+    "b": "y",
+    "c": [1, 2, 3],
+    "d": [
+        {
+            "abc": true,
+            "def": false
+        },
+        
+        {
+            "xyz": null,
+            "uvw": [101, 202, 303]
+        },
+        
+        [4, 5, 6]
+    ]
+}
+</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="comments 1">
+<pre>
+# this here's a comment
+# and another
+[
+# and another
+1
+# and another
+2
+# and another
+3
+# and another
+]
+# and another
+
+</pre>
+<pre>[1, 2, 3]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="comments 2">
+<pre>
+
+# this here's a comment
+
+# and another
+
+[
+
+# and another
+
+1
+
+# and another
+
+2
+
+# and another
+
+3
+
+]
+
+# and another
+
+</pre>
+<pre>[1, 2, 3]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="comments 3">
+<pre>
+# this here's a comment
+[ # and another
+1 # and another
+2 # and another
+3 # and another
+] # and another
+# and another
+</pre>
+<pre>[1, 2, 3]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="true,false,null">
+<pre>[true false null]</pre>
+<pre>[true, false, null]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="true,false,null as strings">
+<pre>["true" "false" "null"]</pre>
+<pre>["true", "false", "null"]</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="true">
+<pre>true</pre>
+<pre>true</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="false">
+<pre>false</pre>
+<pre>false</pre>
+</section>
+
+<!--  ============================================================= -->
+<section id="null">
+<pre>null</pre>
+<pre>null</pre>
+</section>
+
+<!--  ============================================================= -->
+<!--  ============================================================= -->
+<!--  ============================================================= -->
+
+<script src="sloppy_json_parse.js"></script>
+<script src="sloppy_json_parse-test.js"></script>
+
+<!--  ============================================================= -->
+<style>
+section { 
+    display:  none;
+    border:   1 solid;
+    padding:  0.5em 1.0em; 
+    margin:   0.5em 0.0em; 
+}
+
+h1 {
+    margin:  0.0em 0.0em; 
+}
+
+section pre {
+    background-color: #FFA;
+    padding:          1.0em;
+}
+
+</style>
+
